@@ -1,0 +1,13 @@
+rails new ptree -d mysql
+
+cd ptree
+rake db:create
+
+rails g model person name:string sex:string
+rails g migration add_ancestry_to_person ancestry:string
+rails g model family husband_id:string wife_id:string
+rake db:migrate
+
+rake erd
+
+railroady -a -i -o full_models.dot -M
