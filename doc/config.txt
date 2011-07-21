@@ -1,3 +1,8 @@
+Objectif du projet : Réaliser une appli rails 3 utilisant la gem ancestry et avec les fonctionalités de l'article :
+http://stoney.sb.org/wordpress/2007/10/gedcom-to-graphviz/
+Le fichier gedcom est db/Test_arbre.ged
+http://stoney.sb.org/wordpress/wp-content/gedcom2dot.rb.zip
+le résultat est Test_arbre.dot à visualiser avec graphviz
 rails new ptree -d mysql
 
 cd ptree
@@ -11,3 +16,15 @@ rake db:migrate
 rake erd
 
 railroady -a -i -o full_models.dot -M
+ged_parse le parser gedcom est dans lib
+db/seeds.rb utilise le parser pour remplir les tables families et people
+la ligne suivante permet de construire l'arbre
+@pers.update_all(:ancestry => "#{f.husband_id}/#{f.wife_id}")
+rake db:seed
+
+rails c
+p = Person.find(52)
+#<Person id: 52, name: "Simone/BRUN/", sex: "F", ancestry: "56/64">
+p.ancestor_ids
+[56, 64]
+

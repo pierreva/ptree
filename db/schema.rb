@@ -12,19 +12,17 @@
 
 ActiveRecord::Schema.define(:version => 20110718153808) do
 
-  create_table "families", :id => false, :force => true do |t|
-    t.string "famkey"
+  create_table "families", :force => true do |t|
     t.string   "husband_id"
     t.string   "wife_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "people", :id => false, :force => true do |t|
-    t.string "indkey"
-    t.string   "name"
-    t.string   "sex"
-    t.string   "ancestry"
+  create_table "people", :force => true do |t|
+    t.string "name"
+    t.string "sex"
+    t.string "ancestry"
   end
 
 end

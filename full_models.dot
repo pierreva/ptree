@@ -1,7 +1,7 @@
 digraph models_diagram {
 	graph[overlap=false, splines=true]
 	"Family" [shape=Mrecord, label="{Family|created_at :datetime\lupdated_at :datetime\l}"]
-	"Person" [shape=Mrecord, label="{Person|name :string\lsex :string\lcreated_at :datetime\lupdated_at :datetime\lancestry :string\l}"]
+	"Person" [shape=Mrecord, label="{Person|name :string\lsex :string\lancestry :string\l}"]
 	"Person" -> "Family" [label="families_as_husband", arrowtail=odot, arrowhead=crow, dir=both]
 	"Person" -> "Family" [label="families_as_wife", arrowtail=odot, arrowhead=crow, dir=both]
 }

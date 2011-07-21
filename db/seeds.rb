@@ -12,12 +12,12 @@ g = GedParse::Gedcom.new(ged_filename)
 
 g.families.each do |family|
   @fam = Family.new
-  @fam.famkey = family.gid.gsub(/@/,"").gsub(/F/,"")
+  @fam.id = family.gid.gsub(/@/,"").gsub(/F/,"")
 
   if family.husband
     @fam.husband_id = family.husband.gid.gsub(/@/,"").gsub(/I/,"")
     @father = Person.new
-    @father.indkey = family.husband.gid.gsub(/@/,"").gsub(/I/,"")
+    @father.id = family.husband.gid.gsub(/@/,"").gsub(/I/,"")
     @father.name = family.husband.name
     @father.sex = "M"
     @father.save
@@ -25,7 +25,7 @@ g.families.each do |family|
   if family.wife
     @fam.wife_id = family.wife.gid.gsub(/@/,"").gsub(/I/,"")
     @mother = Person.new
-    @mother.indkey = family.wife.gid.gsub(/@/,"").gsub(/I/,"")
+    @mother.id = family.wife.gid.gsub(/@/,"").gsub(/I/,"")
     @mother.name = family.wife.name
     @mother.sex = "F"
     @mother.save
@@ -45,7 +45,7 @@ pp individual.details
       #puts detail[:value].gsub(/@/,"")
        f = Family.find(detail[:value].gsub(/@/,"").gsub(/F/,""))
        # f.husband_id : father f.wife_id : mother
-      @pers = Person.where(:indkey => individual.gid.gsub(/@/,"").gsub(/I/,""))
+      @pers = Person.where(:id => individual.gid.gsub(/@/,"").gsub(/I/,""))
       @pers.update_all(:ancestry => "#{f.husband_id}/#{f.wife_id}")
       
     end

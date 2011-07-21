@@ -1,0 +1,17 @@
+digraph familyTree {
+    node [shape=box label=""]
+    edge [arrowhead=none]
+    node [shape=circle]
+    node [style=filled fillcolor=lightblue]
+    F119 [label = F119]; F66 [label = F66]; F84 [label = F84]; F106 [label = F106]; 
+    node [shape=box]
+    I52 [ label = "Simone/BRUN/"]; I56 [ label = "Pierre-Henri/BRUN/"]; I64 [ label = "Victoire/GUILLERMIER/"]; I72 [ label = "Charles/BRUN/"]; I82 [ label = "Philomène/VENARD/"]; I92 [ label = "Joseph/GUILLERMIER/"]; I104 [ label = "Marie/FORAY/"]; I117 [ label = "Pierre/VAUDREY/"]; 
+    node [style]
+    I52 -> F66
+    I56 -> F84
+    I64 -> F106
+    F119 -> {I117; I52;}
+    F66 -> {I56; I64;}
+    F84 -> {I72; I82;}
+    F106 -> {I92; I104;}
+}
